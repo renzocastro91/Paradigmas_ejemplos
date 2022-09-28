@@ -1,0 +1,78 @@
+En System Browser
+
+Object subclass: #Persona
+	instanceVariableNames: 'nombre apellido dni'
+	classVariableNames: 'brazos piernas'
+	package: 'Paradigmas'
+
+Métodos de Instancia
+
+getApellido
+	^ apellido
+getBrazos
+	^ brazos
+getDNI
+	^ dni
+getNombre
+	^ nombre
+getPiernas
+	^ piernas
+setApellido: arg1
+	apellido := arg1
+setDNI: arg1
+	dni := arg1
+setNombre: arg1
+	nombre := arg1
+
+Métodos de Clase
+
+nombre: arg1 apellido: arg2 dni: arg3
+	| tmp1 |
+	tmp1 := Persona new.
+	tmp1
+		setNombre: arg1;
+		setApellido: arg2;
+		setDNI: arg3.
+	^ tmp1
+
+setBrazos: arg1
+	brazos := arg1
+
+setPiernas: arg1
+	piernas := arg1
+
+En Playground
+|persona_1 persona_2 persona_3|
+Transcript clear.
+"Instanciamos los objetos persona_1 persona_2"
+persona_1:= Persona new.
+persona_1 setNombre: 'Oscar'.
+persona_1 setApellido: 'Ramirez'.
+persona_1 setDNI: 48785458.
+
+persona_2:= Persona new.
+persona_2 setNombre: 'María'.
+persona_2 setApellido: 'Ramos'.
+persona_2 setDNI: 38784125.
+
+"Instanciamos el objeto persona_3 con el constructor que creamos"
+persona_3:= Persona nombre:'Aylen' apellido: 'Verón' dni:38784528.
+Transcript show: persona_3 getNombre; cr.
+
+"Hacemos uso del método de clase "
+Persona setPiernas: 2.
+Persona setBrazos: 2.
+
+"Todos los objetos que se instancien van a tener esos valores que acabamos de setear"
+Transcript show: 'Cantidad de brazos de persona_1 es: ' ,(persona_1 getBrazos)asString; cr.
+Transcript show: 'Cantidad de brazos de persona_2 es: ' ,(persona_2 getBrazos)asString; cr.
+Transcript show: 'Cantidad de brazos de persona_3 es: ' ,(persona_3 getBrazos)asString; cr.
+
+"Si hacemos uso de nuevo del método de clase y modificamos algo, todas las instancias que se creen de la clase verán reflejado ese valor"
+Persona setBrazos:1.
+
+Transcript show: 'Cantidad de brazos de persona_1 ahora es: ' ,(persona_1 getBrazos)asString; cr.
+Transcript show: 'Cantidad de brazos de persona_1 ahora es: ' ,(persona_2 getBrazos)asString; cr.
+Transcript show: 'Cantidad de brazos de persona_1 ahora es: ' ,(persona_3 getBrazos)asString; cr.
+
+Transcript open.
